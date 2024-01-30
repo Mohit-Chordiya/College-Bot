@@ -1,0 +1,2 @@
+model_checkpoint_path: "D:\\xampp\\htdocs\\College-Bot\\college-bot\\model.tflearn"
+all_model_checkpoint_paths: "D:\\xampp\\htdocs\\College-Bot\\college-bot\\model.tflearn"

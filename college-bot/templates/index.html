@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+
+            /* Button used to open the chat form - fixed at the bottom of the page */
+            .open-button {
+              background-color: #6b0f1a;
+              background-image: linear-gradient(315deg, #6b0f1a 0%, #b91372 74%);
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              position: fixed;
+              bottom: 23px;
+              right: 28px;
+              color: white;
+              border-radius: 100%;
+              font-size:medium;
+            }
+
+            .open-button:hover{
+              animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+              transform: translate3d(0, 0, 0);
+              backface-visibility: hidden;
+              perspective: 1000px;
+            }
+            /* The popup chat - hidden by default */
+            .chat-popup {
+              display: none;
+              border-radius: 15px;
+              position: fixed;
+              bottom: 25px;
+              right: 25px;
+              height: 500px;
+              width: 330px;
+              z-index: 9;
+              -webkit-box-shadow: 14px 11px 62px 7px rgba(0,0,0,0.75);
+                -moz-box-shadow: 14px 11px 62px 7px rgba(0,0,0,0.75);
+                box-shadow: 14px 11px 62px 7px rgba(0,0,0,0.75);
+            }
+            .input-group {
+                position: absolute;
+                bottom: 0;
+                width: 300px;
+                padding: 10px;
+            }
+            /* Add styles to the form container */
+            .form-container {
+              max-width: 400px;
+              padding: 15px;
+            }
+            .chatbox{
+                margin: 5px;
+                background: #c9d3d4;
+            }
+            .botText{
+                padding-left: 10px;
+            }
+            .humanText{
+                padding-right: 10px;
+                float: right;
+            }
+            .chat-container{
+                height: 350px;
+                overflow-y: scroll;
+            }
+            .chat-container::-webkit-scrollbar{
+                display: none;
+            }
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+              opacity: 1;
+            }
+            @-webkit-keyframes breathing {
+              0% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+              }
+
+              25% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+              }
+
+              60% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+              }
+
+              100% {
+                -webkit-transform: scale(0.9);
+                transform: scale(0.9);
+              }
+            }
+            @keyframes shake {
+              10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+              }
+
+              20%, 80% {
+                transform: translate3d(2px, 0, 0);
+              }
+
+              30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+              }
+
+              40%, 60% {
+                transform: translate3d(4px, 0, 0);
+              }
+            }
+            @keyframes breathing {
+              0% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+              }
+
+              25% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+              }
+
+              60% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+              }
+
+              100% {
+                -webkit-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                transform: scale(0.9);
+              }
+            }
+
+        </style>
+    </head>
+    <body>
+        <button class="open-button" id="btn" onclick="openForm()"><i class="fas fa-comment-alt "></i></button>
+        <div class="chat-popup" id="myForm" style="background-color: #ffffff;">
+            <nav class="navbar navbar-dark" style="background-color:#612625; background-image: linear-gradient(315deg, #b91372 0%, #612625 74%); border-radius: 15px 15px 0 0;">
+                <a class="navbar-brand" href="#">CollegeBot</a>
+                <button class="float-right" href="#" onclick="closeForm()" style="background: transparent; border: transparent; color:white ;">&times</button>
+            </nav>
+            <div class="form-container">
+                <div class="chat-container" id="cont" style="font-size: 14px;">
+                    <div id="chatbox">
+                      <p class="botText"><span style="background-color: #fcd68f; border-radius: 3px 10px 10px 10px; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;">Hi! I'm CollegeBot.</span></p>
+                    </div>
+                </div>
+                <div class="input-group mb-3" id="userInput">
+                    <input type="text" class="form-control" id="txtip" value="" aria-label="Enter Message">
+                    <div class="input-group-append">
+                        <button type="submit" id="sbtn" class="input-group-text"><i class="fas fa-location-arrow" style="color: #b91372;"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+                document.getElementById("btn").style.display = "none";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+                document.getElementById("btn").style.display = "block";
+            }
+            function getBotResponse() {
+                var rawText = $("#txtip").val();
+                var userHtml = '<p class="humanText"><span style="background-color: rgb(106, 195, 255); border-radius: 20px 5px 20px 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;">' + rawText + '</span></p><br><br>';
+                $("#textInput").val("");
+                $("#chatbox").append(userHtml);
+                document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                $.get("/get", { msg: rawText }).done(function(data) {
+                    console.log('hi');
+                    var botHtml = '<p class="botText"><span style="background-color: #fcd68f; border-radius: 3px 10px 10px 10px; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;">' + data + '</span></p><br>';
+                    $("#chatbox").append(botHtml);
+                    document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                });
+            }
+            $("#txtip").keypress(function(e) {
+                if(e.which == 13) {
+                    getBotResponse();
+                    $("#cont").animate({ scrollTop: $('#cont')[0].scrollHeight}, 1000);
+                    $("txtip").value = "";
+                }
+            });
+            $("#sbtn").click(function() {
+                getBotResponse();
+                $("#cont").animate({ scrollTop: $('#cont')[0].scrollHeight}, 1000);
+                $("txtip").value = "";
+            })
+        </script>
+    </body>
+</html>

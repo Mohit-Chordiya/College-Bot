@@ -1,0 +1,97 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day"],
+         "responses": ["Hello, How are you?", "Good to see you again", "Hi there, how can I help?"],
+         "context_set": ""
+        },
+        {"tag": "directors",
+         "patterns": ["President of K .K. Wagh Education Society", "Head of Board of Director", "Head of K .K. Wagh Education Society"],
+         "responses": ["Shri. Balasaheb D. Wagh <br>President of K .K. Wagh Education Society, Nashik"]
+        },
+        { "tag": "admission",
+          "patterns": ["What is admission process?","What is the process of admission?","Process for 1st year admission in Institute?"," CAP Admission Procedural details"],
+          "responses": ["<a href='https://poly.kkwagh.edu.in/admission%202019-20/CAP%20Admission%20Procedural%20details%20and%20steps%202019-20.pdf'>CAP Procedure</a>","<a href='https://poly.kkwagh.edu.in/admission%202019-20/First%20Year%20Admission%20Schedule%20By%20DTE.pdf'>First Year procedure</a>","Document Required are : <br> 1)Filling Online Application Form by Candidate,<br> 2) Uploading of scanned images of valid necessary original documents,<br> 3) Document Verification at Facilitation Centre by the Candidate.,<br> 4) Filling up and Confirmation of Online Option Form prior to respective CAP Rounds."]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye"],
+         "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {"tag": "hours",
+         "patterns": ["What hours are you open?", "What are your hours?", "When are you open?" ],
+         "responses": ["We're open every day 9am-9pm", "Our hours are 9am-9pm every day"]
+        },
+        {"tag": "payments",
+         "patterns": ["Do you take credit cards?","payments", "Do you accept Mastercard?", "Are you cash only?" ],
+         "responses": ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+        },
+        {"tag": "opentoday",
+         "patterns": ["Are you open today?", "do you open today?", "What are your hours today?"],
+         "responses": ["We're open every day from 9am-9pm", "Our hours are 9am-9pm every day"]
+        },
+        {"tag": "create",
+          "patterns": ["Who created you?", "How were you created"],
+         "responses": ["The College Bot Team created me"]
+        },
+        {"tag": "branch",
+          "patterns": ["What are the Courses Offered?", "Branches available","Department","Branches"],
+         "responses": ["CM, IF, EJ, CE, ME, CH, EE"]
+        },
+        {"tag": "documents",
+         "patterns": ["Which documents are required for admission process?"," Documents for admission"],
+         "responses": ["10th Mark sheet "," School Leaving Certificate","Nationality & Mah. Domicile Certificate"," Caste Certificate"," Income Certificate"," Non Creamy Layer Certificate"]
+        },
+        {"tag": "Direct Second Year ",
+         "patterns": ["Direct Second Year Admission by DTE”,“What is admission process for DSY students"," How to get direct admission in second year?"],
+         "responses": ["<a>https://poly.kkwagh.edu.in/admission%202019-20/Direct%20Second%20Year%20Admission%20by%20DTE.pdf</a>"]
+        },
+        {"tag": "facilities",
+         "patterns": ["Which facilities are available to students?","available facilities"],
+         "responses": ["Bank","Bus"," Sports and Gymnasium","Canteen","Medical"," Hostel"," Counselling"]
+        },
+        {"tag": "bank",
+         "patterns": ["Which bank are provided for students?","available banks in campus"],
+         "responses": ["Janalaxmi Sahkari Bank Ltd, Nashik","  Kallappanna Awade Ichalkaranji Janta Sahkari Bank Ltd., Nashik"]
+        },
+        {"tag": "bus",
+         "patterns": ["Is Bus facility provided for students?","bus facility available?"],
+         "responses": ["Yes, The institute has its own fleet of buses which not only take care of daily transportation , but are also used for students outings like NSS programme, study tours and industrial visits etc."]
+        },
+        {"tag": "bus",
+         "patterns": ["Which bus routes are available?","Bus routes"],
+         "responses": ["The following routes are available : <br> Route 1: Jail Road, <br> Route 2: Pune Road, <br> Route 3: Cidco, <br> Route 4: College Road, <br> Route 5: Gangapur Road"]
+        },
+        {"tag": " Sports and Gymnasium",
+         "patterns": ["Are sports and gym facilities available"],
+         "responses": ["K.K. Wagh Education Society's Department of Physical Education and Sports provide sports and Gymnasium facility"]
+        },
+        {"tag": " Canteen",
+         "patterns": ["Is canteen facility available"],
+         "responses": ["K.K. Wagh Institute provide the Canteen facility.  The canteen has a modern kitchen with the latest appliances to provide for Indian and Chinese cuisine."]
+        },
+        {"tag": "medical",
+         "patterns": ["Is the medical facility available/provided for students?"],
+         "responses": ["The institute have dispensary in college campus named Karmaveer Dispensary."]
+        },
+        {"tag": "ambulance",
+         "patterns": ["Is there ambulance facility provided?","Ambulance no?"],
+         "responses": ["In case of emergency, the institute ambulance is used to transfer the sick person to the hospital."," The institute has Doctor-on-call system and 24*7 availability of ambulance to handle emergencies. Separate Doctor is appointed for Boys and Girls hostel.","Ambulance no: 9850604892"]
+        },
+        {"tag": "hostel",
+         "patterns": ["Is institute provide hostel and mess facility?","What is the name of girls hostel?","What is the name of girls hostel?"],
+         "responses": ["Institute provide Hostel and Mess facility","Girls hostel: Geetai","Boys Hostel:Karmaveer"]
+        },
+        {"tag": "counselling",
+         "patterns": ["Is the counselling facility available?","Who is the counselor?","Name of counseller"],
+         "responses": ["Counselling facility is available for Students."," Name of Counselor:Mr. C. G. Palsodkar ,Psychology Counselor"]
+        },
+        {"tag": "counselling" ,
+         "patterns": ["What are the objectives /motive behind arranging counselling?"],
+         "responses": ["To help in the overall development of the student","To help the students vocational development","To minimize the mismatching between education and employment","To motivate the youth for self-employment","To help fresher in establishing proper identity","To identity and help students in need of special help","To ensure proper utilization of time spent outside the classroom","To help students in sorting their personal problems"]
+        }
+
+]
+}
